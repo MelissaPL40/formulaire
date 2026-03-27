@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demande d'Impression – Bixoko</title>
+  <link rel="stylesheet" href="stylebix.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <img src="BIXOKO.png" alt="Logo Bixoko" class="logo"/>
+  </header>
+  
+  <h1 class="titread">DEMANDE D'IMPRESSION</h1>
+
+  <section>
+    <div class="grid2">
+      <article class="fond2">
+        <div class="text-content">
+          <p class="texte1">
+            Remplissez le formulaire ci-dessous pour nous soumettre votre demande d'impression.
+            Nous vous recontacterons rapidement avec un devis personnalisé. 📦🖨️
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="contact">
+      <h2 class="titre-niveau">Votre demande</h2>
+
+      <form class="contact-form" onsubmit="envoyerFormulaire(event)">
+
+        <!-- Coordonnées -->
+        <fieldset class="form-group">
+          <legend>👤 Vos coordonnées</legend>
+
+          <div class="form-row">
+            <div class="form-col">
+              <label for="nom">Nom *</label>
+              <input type="text" id="nom" name="nom" placeholder="Dupont" required>
+            </div>
+            <div class="form-col">
+              <label for="prenom">Prénom *</label>
+              <input type="text" id="prenom" name="prenom" placeholder="Marie" required>
+            </div>
+          </div>
+
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" placeholder="marie.dupont@email.com" required>
+
+          <label for="telephone">Téléphone</label>
+          <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00">
+
+          <label for="societe">Société / Organisation</label>
+          <input type="text" id="societe" name="societe" placeholder="Nom de votre entreprise (facultatif)">
+        </fieldset>
+
+        <!-- Type de support -->
+        <fieldset class="form-group">
+          <legend>🖨️ Type de support</legend>
+
+          <label for="support">Support souhaité *</label>
+          <select id="support" name="support" required>
+            <option value="" disabled selected>-- Choisissez un support --</option>
+            <option value="flyer">Flyer</option>
+            <option value="affiche">Affiche</option>
+            <option value="brochure">Brochure</option>
+            <option value="carte-visite">Carte de visite</option>
+            <option value="catalogue">Catalogue</option>
+            <option value="depliant">Dépliant</option>
+            <option value="etiquette">Étiquette</option>
+            <option value="banner">Banderole / Banner</option>
+            <option value="autre">Autre</option>
+          </select>
+
+          <label for="support-autre">Précisez si "Autre"</label>
+          <input type="text" id="support-autre" name="support_autre" placeholder="Décrivez votre support">
+        </fieldset>
+
+        <!-- Format -->
+        <fieldset class="form-group">
+          <legend>📐 Format</legend>
+
+          <label for="format">Format *</label>
+          <select id="format" name="format" required>
+            <option value="" disabled selected>-- Choisissez un format --</option>
+            <option value="A3">A3 (297 × 420 mm)</option>
+            <option value="A4">A4 (210 × 297 mm)</option>
+            <option value="A5">A5 (148 × 210 mm)</option>
+            <option value="A6">A6 (105 × 148 mm)</option>
+            <option value="carte-visite">Carte de visite (85 × 55 mm)</option>
+            <option value="sur-mesure">Sur-mesure</option>
+          </select>
+
+          <div id="mesure-fields" class="hidden">
+            <div class="form-row">
+              <div class="form-col">
+                <label for="largeur">Largeur (mm)</label>
+                <input type="number" id="largeur" name="largeur" placeholder="ex: 150" min="1">
+              </div>
+              <div class="form-col">
+                <label for="hauteur">Hauteur (mm)</label>
+                <input type="number" id="hauteur" name="hauteur" placeholder="ex: 250" min="1">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Quantité -->
+        <fieldset class="form-group">
+          <legend>🔢 Quantité</legend>
+
+          <label for="quantite">Nombre d'exemplaires *</label>
+          <select id="quantite" name="quantite" required>
+            <option value="" disabled selected>-- Choisissez une quantité --</option>
+            <option value="50">50 exemplaires</option>
+            <option value="100">100 exemplaires</option>
+            <option value="250">250 exemplaires</option>
+            <option value="500">500 exemplaires</option>
+            <option value="1000">1 000 exemplaires</option>
+            <option value="2000">2 000 exemplaires</option>
+            <option value="5000">5 000 exemplaires</option>
+            <option value="autre">Autre quantité</option>
+          </select>
+
+          <label for="quantite-autre">Précisez si "Autre"</label>
+          <input type="number" id="quantite-autre" name="quantite_autre" placeholder="Nombre exact" min="1">
+        </fieldset>
+
+        <!-- Papier -->
+        <fieldset class="form-group">
+          <legend>📄 Type de papier</legend>
+          <label for="finition-papier">Finition du papier *</label>
+          <select id="finition-papier" name="finition_papier" required>
+            <option value="" disabled selected>-- Choisissez une finition --</option>
+            <option value="mat">Mat</option>
+            <option value="brillant">Brillant</option>
+            <option value="satiné">Satiné</option>
+            <option value="recycled">Recyclé</option>
+            <option value="kraft">Kraft</option>
+          </select>
+        </fieldset>
+
+        <!-- Couleur -->
+        <fieldset class="form-group">
+          <legend>🎨 Impression</legend>
+
+          <label>Couleur d'impression *</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="couleur" value="couleur" required>
+              <span>🌈 Couleur (quadrichromie CMJN)</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="couleur" value="nb">
+              <span>⬛ Noir & Blanc</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Options -->
+        <fieldset class="form-group">
+          <legend>⚙️ Options supplémentaires</legend>
+
+          <label>Recto / Verso *</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="recto_verso" value="recto" required>
+              <span>Recto uniquement</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="recto_verso" value="recto-verso">
+              <span>Recto-Verso</span>
+            </label>
+          </div>
+
+          <label>Pelliculage</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="pelliculage" value="aucun">
+              <span>Aucun</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="pelliculage" value="mat">
+              <span>Pelliculage mat</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="pelliculage" value="brillant">
+              <span>Pelliculage brillant</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="pelliculage" value="soft-touch">
+              <span>Soft Touch</span>
+            </label>
+          </div>
+
+          <label>Options de finition</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="option_pliage" value="1">
+              <span>Pliage</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="option_coupe" value="1">
+              <span>Découpe spéciale</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="option_reliure" value="1">
+              <span>Reliure</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="option_vernis" value="1">
+              <span>Vernis sélectif</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Délai -->
+        <fieldset class="form-group">
+          <legend>📅 Délai souhaité</legend>
+
+          <label for="delai">Délai de livraison *</label>
+          <select id="delai" name="delai" required>
+            <option value="" disabled selected>-- Choisissez un délai --</option>
+            <option value="urgent">Urgent – sous 48h (supplément possible)</option>
+            <option value="standard">Standard – 5 à 7 jours ouvrés</option>
+            <option value="10j">Sous 10 jours ouvrés</option>
+            <option value="15j">Sous 15 jours ouvrés</option>
+            <option value="flexible">Flexible – je ne suis pas pressé(e)</option>
+          </select>
+
+          <label for="date-souhaitee">Date de livraison souhaitée (optionnel)</label>
+          <input type="date" id="date-souhaitee" name="date_souhaitee">
+        </fieldset>
+
+        <!-- Fichier -->
+        <fieldset class="form-group">
+          <legend>📎 Fichier à imprimer</legend>
+
+          <label for="fichier">Téléchargez votre fichier</label>
+          <div class="file-drop-zone" id="dropZone">
+            <span class="file-icon">📂</span>
+            <p>Glissez-déposez votre fichier ici<br><small>ou cliquez pour parcourir</small></p>
+            <input type="file" id="fichier" name="fichier" accept=".pdf,.ai,.eps,.png,.jpg,.jpeg,.tiff,.indd" class="file-input">
+            <p class="file-hint">Formats acceptés : PDF, AI, EPS, PNG, JPG, TIFF, INDD — Max 50 Mo</p>
+          </div>
+          <p id="file-name-display" class="file-name-display"></p>
+
+          <label for="commentaire">Commentaires / Instructions particulières</label>
+          <textarea id="commentaire" name="commentaire" rows="4" placeholder="Ex : veuillez respecter les zones de sécurité, utiliser le Pantone 485 pour le rouge…"></textarea>
+        </fieldset>
+
+        <button type="submit" class="btn-submit">
+          Envoyer ma demande →
+        </button>
+
+      </form>
+	   <div id="confirmation-message" style="display:none; text-align:center; color:#5A864F; font-weight:600; margin-top:20px;">
+    ✔️ Le formulaire a bien été envoyé
+	</div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Bixoko. Tous droits réservés.<br>
+      Retrouvez-nous sur les réseaux sociaux :
+    </p>
+    <a href="https://www.facebook.com/bixoko" target="_blank">
+      <img class="reseau" src="facebook.png" alt="Facebook">
+    </a>
+    <a href="https://www.linkedin.com/company/agence-bixoko/posts/?feedView=all" target="_blank">
+      <img class="reseau" src="twitter.png" alt="Linkedin">
+    </a>
+    <a href="https://www.instagram.com/bixoko/" target="_blank">
+      <img class="reseau" src="insta.jpg" alt="Instagram">
+    </a>
+  </footer>
+  <script>
+    // Afficher le champ sur-mesure
+    document.getElementById('format').addEventListener('change', function () {
+      const mesureFields = document.getElementById('mesure-fields');
+      mesureFields.style.display = this.value === 'sur-mesure' ? 'block' : 'none';
+    });
+
+    // Affichage du nom de fichier sélectionné
+    document.getElementById('fichier').addEventListener('change', function () {
+      const display = document.getElementById('file-name-display');
+      display.textContent = this.files.length > 0 ? '✅ Fichier sélectionné : ' + this.files[0].name : '';
+    });
+
+    // Drag & drop visuel
+    const dropZone = document.getElementById('dropZone');
+    dropZone.addEventListener('click', () => document.getElementById('fichier').click());
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('drag-over');
+      const file = e.dataTransfer.files[0];
+      if (file) {
+        document.getElementById('fichier').files = e.dataTransfer.files;
+        document.getElementById('file-name-display').textContent = '✅ Fichier sélectionné : ' + file.name;
+      }
+    });
+  </script>
+<script>
+function envoyerFormulaire(event) {
+    event.preventDefault(); // empêche le rechargement
+
+    // afficher le message
+    document.getElementById("confirmation-message").style.display = "block";
+
+    // vider le formulaire
+    event.target.reset();
+}
+</script>
+</body>
+</html>
